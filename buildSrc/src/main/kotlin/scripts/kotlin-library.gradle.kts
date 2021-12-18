@@ -1,11 +1,11 @@
 package scripts
 
-import gradle.kotlin.dsl.accessors._89a50c7843ed4f07fb73edd87269a68f.publishing
+import LibraryConfig
 
 plugins {
     `java-library`
     kotlin("jvm")
-    `maven-publish`
+    id("scripts.publication-convention")
 }
 
 java {
@@ -19,7 +19,7 @@ publishing {
         this.create<MavenPublication>("release") {
             from(components["java"])
             groupId = LibraryConfig.groupId
-            artifactId = "${LibraryConfig.libraryName}-core"
+            artifactId = "core"
             version = LibraryConfig.versionName
             artifact(kotlinSourcesJar)
         }

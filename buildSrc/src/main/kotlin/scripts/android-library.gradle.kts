@@ -7,7 +7,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    `maven-publish`
+    id("scripts.publication-convention")
 }
 
 android {
@@ -65,7 +65,7 @@ afterEvaluate {
             this.create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = LibraryConfig.groupId
-                artifactId = "${LibraryConfig.libraryName}-android"
+                artifactId = "android"
                 version = LibraryConfig.versionName
                 artifact(releaseSourcesJar)
             }
